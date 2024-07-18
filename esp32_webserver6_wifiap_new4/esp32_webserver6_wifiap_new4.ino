@@ -30,7 +30,7 @@ ported for sparkfun esp32
 #include "Freenove_WS2812_Lib_for_ESP32.h"
 
 
-#define LEDS_COUNT 60
+#define LEDS_COUNT 18
 #define LEDS_PIN 27
 #define CHANNEL		0
 
@@ -93,7 +93,7 @@ void setup()
 
     server.begin();
     MDNS.addService("http", "tcp", 80);
-    setAll(15, 0, 25);
+    setAll(5, 0, 10);
 
 }
 
