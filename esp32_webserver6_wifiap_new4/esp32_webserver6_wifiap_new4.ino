@@ -137,12 +137,23 @@ void loop(){
             client.print("Click <a href=\"/brightness0\">BRIGHTNESS 0%</a> to set BRIGHTNESS 0.<br><br><br>");
 
 
+
+
             client.print("Click <a href=\"/strobo1on50off50loops4\">STROBO1 50 ON 50 OFF 4 LOOPS</a><br>");
-            client.print("Click <a href=\"/strobo1on100off100loops2\">STROBO1 100 ON 100 OFF 2 LOOPS</a><br>");
+            client.print("Click <a href=\"/strobo1on100off100loops2\">STROBO1 100 ON 100 OFF 2 LOOPS</a><br><br>");
             
             
             client.print("Click <a href=\"/strobo1on50off50loops6\">STROBO 50 OFF 50 ON 10 LOOPS</a><br>");
             client.print("Click <a href=\"/strobo1on35off35loops6\">STROBO 35 OFF 35 ON 10 LOOPS</a><br><br>");
+
+            client.print("Click <a href=\"/strobo25_25_10\">STROBO 25 25 10</a><br>");
+            client.print("Click <a href=\"/strobo20_20_10\">STROBO 20 20 10</a><br><br>");
+
+
+            client.print("Click <a href=\"/strobo15_15_10\">STROBO 15 15 10</a><br>");
+            client.print("Click <a href=\"/strobo12_12_10\">strobo 12 12 10</a><br>");
+            client.print("Click <a href=\"/strobo10_10_10\">STROBO 10 10 10</a><br><br>");
+
 
             client.print("Click <a href=\"/strobo_light_on\">STROBO LIGHT ON</a><br><br>");
             client.print("Click <a href=\"/strobo_light_off\">STROBO LIGHT OFF</a><br>");
@@ -189,6 +200,12 @@ void loop(){
         if (currentLine.endsWith("GET /strobo1on50off50loops4")) strobo1(50, 50, 4);
         if (currentLine.endsWith("GET /strobo1on50off50loops6")) strobo1(50, 50, 6);
         if (currentLine.endsWith("GET /strobo1on35off35loops6")) strobo1(35, 35, 6);
+
+        if (currentLine.endsWith("GET /strobo25_25_10")) strobo1(25, 25, 10);
+        if (currentLine.endsWith("GET /strobo20_20_10")) strobo1(20, 20, 10);
+        if (currentLine.endsWith("GET /strobo15_15_10")) strobo1(15, 15, 10);
+        if (currentLine.endsWith("GET /strobo12_12_10")) strobo1(12, 12, 10);
+        if (currentLine.endsWith("GET /strobo10_10_10")) strobo1(10, 10, 10);
 
         if (currentLine.endsWith("GET /strobo1on100off100loops2")) strobo1(100, 100, 2);
         if (currentLine.endsWith("GET /strobo_light_on")) digitalWrite(STROBO_PIN, LOW);
