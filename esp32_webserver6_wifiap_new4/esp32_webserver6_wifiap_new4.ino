@@ -28,6 +28,7 @@ ported for sparkfun esp32
 #include <WiFi.h>
 #include <ESPmDNS.h>
 #include "Freenove_WS2812_Lib_for_ESP32.h"
+#indluce "luxdef_strobo.h"
 
 
 #define LEDS_COUNT 18
