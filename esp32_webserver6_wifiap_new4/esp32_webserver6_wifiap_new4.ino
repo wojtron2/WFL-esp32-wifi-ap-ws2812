@@ -137,10 +137,15 @@ void loop(){
             client.print("Click <a href=\"/brightness0\">BRIGHTNESS 0%</a> to set BRIGHTNESS 0.<br><br><br>");
 
 
-            client.print("Click <a href=\"/strobo1on50off50loops2\">STROBO1 50 ON 50 OFF 2 SEC</a>turn on STROBO1 50 ON 50 OFF 2 SEC <br>");
-            client.print("Click <a href=\"/strobo1on100off100loops2\">STROBO1 100 ON 100 OFF 2 SEC</a>turn on STROBO1 100 ON 100 OFF 2 SEC <br>");
-            client.print("Click <a href=\"/strobo_light_on\">STROBO LIGHT ON</a><br>");
-            client.print("Click <a href=\"/strobo_light_of\">STROBO LIGHT OFF</a><br>");
+            client.print("Click <a href=\"/strobo1on50off50loops4\">STROBO1 50 ON 50 OFF 4 LOOPS</a><br>");
+            client.print("Click <a href=\"/strobo1on100off100loops2\">STROBO1 100 ON 100 OFF 2 LOOPS</a><br>");
+            
+            
+            client.print("Click <a href=\"/strobo1on50off50loops6\">STROBO 50 OFF 50 ON 10 LOOPS</a><br>");
+            client.print("Click <a href=\"/strobo1on35off35loops6\">STROBO 35 OFF 35 ON 10 LOOPS</a><br><br>");
+
+            client.print("Click <a href=\"/strobo_light_on\">STROBO LIGHT ON</a><br><br>");
+            client.print("Click <a href=\"/strobo_light_off\">STROBO LIGHT OFF</a><br>");
             
 
             // The HTTP response ends with another blank line:
@@ -181,11 +186,13 @@ void loop(){
         if (currentLine.endsWith("GET /brightness15")) strip.setBrightness(15);
         if (currentLine.endsWith("GET /brightness5")) strip.setBrightness(5);
         if (currentLine.endsWith("GET /brightness0")) strip.setBrightness(0);
-        if (currentLine.endsWith("GET /strobo1on50off50loops2")) strobo1(50, 50, 2);
+        if (currentLine.endsWith("GET /strobo1on50off50loops4")) strobo1(50, 50, 4);
+        if (currentLine.endsWith("GET /strobo1on50off50loops6")) strobo1(50, 50, 6);
+        if (currentLine.endsWith("GET /strobo1on35off35loops6")) strobo1(35, 35, 6);
 
-        if (currentLine.endsWith("GET /strobo1on100off100loops2")) strobo1(100, 100, 1);
-        if (currentLine.endsWith("GET /strobo_light_on")) digitalWrite(STROBO_PIN, HIGH);
-        if (currentLine.endsWith("GET /strobo_light_off")) digitalWrite(STROBO_PIN, LOW);
+        if (currentLine.endsWith("GET /strobo1on100off100loops2")) strobo1(100, 100, 2);
+        if (currentLine.endsWith("GET /strobo_light_on")) digitalWrite(STROBO_PIN, LOW);
+        if (currentLine.endsWith("GET /strobo_light_off")) digitalWrite(STROBO_PIN, HIGH);
         
 
       }
