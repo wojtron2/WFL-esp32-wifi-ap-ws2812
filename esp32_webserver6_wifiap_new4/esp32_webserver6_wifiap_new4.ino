@@ -28,12 +28,14 @@ ported for sparkfun esp32
 #include <WiFi.h>
 #include <ESPmDNS.h>
 #include "Freenove_WS2812_Lib_for_ESP32.h"
-#indluce "luxdef_strobo.h"
+#include "luxdef_strobo.h"
+//#include "globalvars.h"
 
 
 #define LEDS_COUNT 18
 #define LEDS_PIN 27
-#define CHANNEL		0
+#define CHANNEL 0
+#define STROBO_PIN 25
 
 //const char* ssid     = "esp32apnewnew23";
 const char* ssid     = "ESP32_wojtron";
@@ -57,7 +59,7 @@ void setup()
     strip.begin();
     strip.setBrightness(100);
 
-    //pinMode(5, OUTPUT);      // set the LED pin mode
+    pinMode(25, OUTPUT);      // set the STROBO pin mode
 
     delay(10);
 
@@ -132,7 +134,13 @@ void loop(){
             client.print("Click <a href=\"/brightness25\">BRIGHTNESS 25%</a> to set BRIGHTNESS 25.<br>");
             client.print("Click <a href=\"/brightness15\">BRIGHTNESS 15%</a> to set BRIGHTNESS 15.<br>");
             client.print("Click <a href=\"/brightness5\">BRIGHTNESS 5%</a> to set BRIGHTNESS 5.<br>");
-            client.print("Click <a href=\"/brightness0\">BRIGHTNESS 0%</a> to set BRIGHTNESS 0.<br>");
+            client.print("Click <a href=\"/brightness0\">BRIGHTNESS 0%</a> to set BRIGHTNESS 0.<br><br><br>");
+
+
+            client.print("Click <a href=\"/strobo1on50off50loops2\">STROBO1 50 ON 50 OFF 2 SEC</a>turn on STROBO1 50 ON 50 OFF 2 SEC <br>");
+            client.print("Click <a href=\"/strobo1on100off100loops2\">STROBO1 100 ON 100 OFF 2 SEC</a>turn on STROBO1 100 ON 100 OFF 2 SEC <br>");
+            client.print("Click <a href=\"/strobo_light_on\">STROBO LIGHT ON</a><br>");
+            client.print("Click <a href=\"/strobo_light_of\">STROBO LIGHT OFF</a><br>");
             
 
             // The HTTP response ends with another blank line:
@@ -173,6 +181,13 @@ void loop(){
         if (currentLine.endsWith("GET /brightness15")) strip.setBrightness(15);
         if (currentLine.endsWith("GET /brightness5")) strip.setBrightness(5);
         if (currentLine.endsWith("GET /brightness0")) strip.setBrightness(0);
+        if (currentLine.endsWith("GET /strobo1on50off50loops2")) strobo1(50, 50, 2);
+
+        if (currentLine.endsWith("GET /strobo1on100off100loops2")) strobo1(100, 100, 1);
+        if (currentLine.endsWith("GET /strobo_light_on")) digitalWrite(STROBO_PIN, HIGH);
+        if (currentLine.endsWith("GET /strobo_light_off")) digitalWrite(STROBO_PIN, LOW);
+        
+
       }
     }
     // close the connection:
