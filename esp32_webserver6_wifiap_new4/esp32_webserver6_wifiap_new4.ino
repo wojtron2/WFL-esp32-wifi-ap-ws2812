@@ -20,8 +20,6 @@
  created for arduino 25 Nov 2012
  by Tom Igoe
 
-ported for sparkfun esp32 
-31.01.2017 by Jan Hendrik Berlin
  
  */
 
@@ -154,6 +152,11 @@ void loop(){
             client.print("Click <a href=\"/strobo12_12_10\">strobo 12 12 10</a><br>");
             client.print("Click <a href=\"/strobo10_10_10\">STROBO 10 10 10</a><br><br>");
 
+            client.print("Click <a href=\"/strobo7_7_10\">strobo 7 7 10</a><br>");
+            client.print("Click <a href=\"/strobo5_5_10\">strobo 5 5 10</a><br>");
+            client.print("Click <a href=\"/strobo3_3_10\">strobo 3 3 10</a><br>");
+            client.print("Click <a href=\"/strobo2_2_10\">strobo 2 2 10</a><br>");
+
 
             client.print("Click <a href=\"/strobo_light_on\">STROBO LIGHT ON</a><br><br>");
             client.print("Click <a href=\"/strobo_light_off\">STROBO LIGHT OFF</a><br>");
@@ -206,6 +209,11 @@ void loop(){
         if (currentLine.endsWith("GET /strobo15_15_10")) strobo1(15, 15, 10);
         if (currentLine.endsWith("GET /strobo12_12_10")) strobo1(12, 12, 10);
         if (currentLine.endsWith("GET /strobo10_10_10")) strobo1(10, 10, 10);
+
+        if (currentLine.endsWith("GET /strobo7_7_10")) strobo1(7, 7, 10);
+        if (currentLine.endsWith("GET /strobo5_5_10")) strobo1(5, 5, 10);
+        if (currentLine.endsWith("GET /strobo3_3_10")) strobo1(3, 3, 10);
+        if (currentLine.endsWith("GET /strobo2_2_10")) strobo1(2, 2, 10);
 
         if (currentLine.endsWith("GET /strobo1on100off100loops2")) strobo1(100, 100, 2);
         if (currentLine.endsWith("GET /strobo_light_on")) digitalWrite(STROBO_PIN, LOW);
